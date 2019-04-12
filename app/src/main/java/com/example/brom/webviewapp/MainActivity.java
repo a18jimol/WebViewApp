@@ -14,8 +14,7 @@ import android.webkit.WebView;
 
 
 public class MainActivity extends AppCompatActivity {
-    // Create a private member variable that can hold our WebView
-    // WebView webView = new WebView(this);
+    // skapar variabeln webview
     private WebView webview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         webview = findViewById(R.id.webviews);
 
-        //Dessa gör att det går att klicka på appen.
+        //Dessa gör att det går att använda alla javascript på hemsidan.
         WebSettings websettings = webview.getSettings();
         websettings.setJavaScriptEnabled(true);
-        //webView.loadUrl("http://wwwlab.iit.his.se/b18veran/Mobilappdesign/App/App-Om.html");
+        // laddar in den interna sidan när man startar appen
         webview.loadUrl("file:///android_asset/about.html");
 
         // 1. Create a WebView element in the layout file content_main.xml
@@ -67,12 +66,12 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //Om man trycker på knappen extern är det hit man skickas alltså till en hemsida.
+        // Länken för att komma till den externa sidan
         if (id == R.id.action_settings) {
             webview.loadUrl("http://wwwlab.iit.his.se/a18jimol/mobildugga/projekt/");
             return true;
         }
-        //Om man trycker på knappen intern är det hit vi kommer alltså till den iterna html sidan.
+        //Länken för att komma till den interna sidan
         if (id == R.id.action_setting) {
             webview.loadUrl("file:///android_asset/about.html");
             return true;
